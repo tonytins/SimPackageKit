@@ -27,16 +27,16 @@ protocol PackedFile {
     var signature: UInt16 { get set }
     
     /// Returns the uncompressed file size
-    var uncompressedSize: UInt8 { get }
+    var uncompressedSize: UInt8 { get set }
     
     /// Returns the plain file data (might be compressed)
-    var data: [UInt8] { get }
+    var data: [UInt8] { get set }
     
     /// Returns the plain file data (might be compressed)
-    var plainData: [UInt8] { get }
+    var plainData: [UInt8] { get set }
     
     /// Returns the plain file data. If the packed file is compressed it will be decompressed.
-    var uncompressedData: [UInt8] { get }
+    var uncompressedData: [UInt8] { get set }
     
     /// Returns the uncompressed data
     /// - Parameter maxSize: Maximum number of bytes that should be returned
@@ -45,6 +45,18 @@ protocol PackedFile {
     /// Returns part of a decompressed file
     /// - Parameter size: Max number of bytes to decompress
     func decompress(size: Float) -> Array<UInt8>
+}
+
+/// The protocol implmenets methods that must be provided by a PackedFile wrapped
+protocol PackedFileName {
+    
+    var resourceName: String { get set }
+    
+    /// Description for this package
+    var description: String { get set }
+    
+    /// Header for this descrption
+    var descriptionHeader: String { get set }
 }
 
 struct FileDescriptorData {

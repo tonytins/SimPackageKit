@@ -16,6 +16,10 @@ protocol OpcodeProvider : CommonPackage {
     func findExpressionOperator(op: UInt) -> String
 }
 
+protocol CacheFileTest {
+    func load(fileName: String)
+}
+
 struct SimPackageKit {
     var text = "Hello, World!"
 }
